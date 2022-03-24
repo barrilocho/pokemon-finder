@@ -1,9 +1,13 @@
+import { Button } from '@nextui-org/react';
 import { NextPage } from 'next';
+import { MainLayout } from '../src/components/layouts';
 
 const Home: NextPage = () => {
   return (
     <>
-      <h1>Base code</h1>
+      <MainLayout title="Chikorita">
+        <Button>test</Button>
+      </MainLayout>
     </>
   );
 };
