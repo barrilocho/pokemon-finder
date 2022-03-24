@@ -1,14 +1,11 @@
 .navbar {
   &__container {
-    
-      display: flex;
-      width: 100%;
-      flex-direction: row;
-      alignItems: 'center',
-      justifyContent: 'start',
-      padding: '0px 20px',
-      backgroundColor: theme?.colors.gray900.value,
-    
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0px 20px;
   }
   &__spacer {
     flex: 1;
