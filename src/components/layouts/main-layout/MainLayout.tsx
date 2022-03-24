@@ -12,14 +12,8 @@ export const MainLayout: FC<Props> = ({ children, title }) => {
       <Head>
         <title>{title || 'Pokémon Finder'} </title>
         <meta name="author" content="Alejandro Barrios" />
-        <meta
-          name="description"
-          content={`Pokemon finder application, ${title}`}
-        />
-        <meta
-          name="keywords"
-          content={`${title}, Pokemon, Pokedex, Pokemon finder`}
-        />
+        <meta name="description" content={`Pokemon finder application, ${title}`} />
+        <meta name="keywords" content={`${title}, Pokemon, Pokedex, Pokemon finder`} />
       </Head>
       <NavbarComponent />
       <main>{children}</main>
