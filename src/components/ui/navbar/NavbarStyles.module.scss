@@ -1,0 +1,16 @@
+.navbar {
+  &__container {
+    
+      display: flex;
+      width: 100%;
+      flex-direction: row;
+      alignItems: 'center',
+      justifyContent: 'start',
+      padding: '0px 20px',
+      backgroundColor: theme?.colors.gray900.value,
+    
+  }
+  &__spacer {
+    flex: 1;
+  }
+}

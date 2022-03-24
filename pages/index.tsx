@@ -5,7 +5,7 @@ import { MainLayout } from '../src/components/layouts';
 const Home: NextPage = () => {
   return (
     <>
-      <MainLayout title="Chikorita">
+      <MainLayout title="Listado de Pokemons">
         <Button>test</Button>
       </MainLayout>
     </>
