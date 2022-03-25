@@ -13,7 +13,7 @@ export const NavbarComponent = () => {
       style={{ backgroundColor: theme?.colors.gray900.value }}
     >
       <NextLink href="/" passHref>
-        <Link css={{ display: 'flex', alignItems: 'center' }}>
+        <Link className={styles.navbar__link}>
           <Image
             width={60}
             alt="Icono Pokemon finder"
@@ -31,7 +31,7 @@ export const NavbarComponent = () => {
 
       <Spacer className={styles.navbar__spacer}></Spacer>
       <NextLink href="/favorites" passHref>
-        <Link css={{ display: 'flex', alignItems: 'center' }}>
+        <Link className={styles.navbar__link}>
           <Text color="white" h5>
             Favorites
           </Text>
