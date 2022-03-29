@@ -4,14 +4,20 @@ import { useEffect } from 'react';
 import { pokeApi } from '../../src/api';
 import { useToggleFavorite } from '../../src/components/hooks';
 import { MainLayout } from '../../src/components/layouts';
-import { PokemonInterface, SmallPokemon } from '../../src/interfaces';
+import { PokemonInterface } from '../../src/interfaces';
 
 interface Props {
   pokemon: PokemonInterface;
 }
 
 const PokemonPage: NextPage<Props> = ({ pokemon }) => {
-  const [isFavorite, toggleFavorite] = useToggleFavorite(pokemon.id);
+  const { isFavorite, existInFavorites, toggleFavorite } = useToggleFavorite();
+
+  useEffect(() => {
+    if (existInFavorites(pokemon.id) !== isFavorite) {
+      toggleFavorite(pokemon.id);
+    }
+  });
 
   return (
     <MainLayout title={`Pokémon - ${pokemon.name}`}>
@@ -41,7 +47,7 @@ const PokemonPage: NextPage<Props> = ({ pokemon }) => {
               </Text>
               <Button
                 color="gradient"
-                onClick={toggleFavorite}
+                onClick={() => toggleFavorite(pokemon.id)}
                 ghost={!isFavorite}
               >
                 {`${isFavorite ? 'Remove' : 'Add'} to favorites`}

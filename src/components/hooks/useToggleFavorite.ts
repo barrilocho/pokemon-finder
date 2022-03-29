@@ -1,18 +1,11 @@
 import { useEffect, useState } from 'react';
 import { useLocalStorage } from './useLocalStorage';
 
-export const useToggleFavorite = (id: number) => {
+export const useToggleFavorite = () => {
   const [favorites, setFavorite] = useLocalStorage('favorites', []);
-  const [isFavorite, setIsFavorite] = useState(() => {
-    return favorites && favorites.includes(id);
-  });
-  useEffect(() => {
-    if (favorites && id) {
-      setIsFavorite(favorites && favorites.includes(id));
-    }
-  }, [favorites, id]);
+  const [isFavorite, setIsFavorite] = useState<boolean>(false);
 
-  const toggleFavorite = (): void => {
+  const toggleFavorite = (id: number): void => {
     if (isFavorite) {
       setFavorite(favorites.filter((item: number) => item !== id));
       setIsFavorite(false);
@@ -21,5 +14,10 @@ export const useToggleFavorite = (id: number) => {
       setIsFavorite(true);
     }
   };
-  return [isFavorite, toggleFavorite];
+  const existInFavorites = (id: number): boolean => {
+    if (typeof window === 'undefined') return false;
+    return favorites && favorites.includes(id);
+  };
+
+  return { isFavorite, existInFavorites, toggleFavorite };
 };
