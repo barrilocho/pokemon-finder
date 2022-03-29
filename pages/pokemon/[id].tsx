@@ -1,6 +1,7 @@
 import { Button, Card, Container, Grid, Image, Text } from '@nextui-org/react';
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 import { pokeApi } from '../../src/api';
+import { useToggleFavorite } from '../../src/components/hooks';
 import { MainLayout } from '../../src/components/layouts';
 import { PokemonInterface, SmallPokemon } from '../../src/interfaces';
 
@@ -9,6 +10,7 @@ interface Props {
 }
 
 const PokemonPage: NextPage<Props> = ({ pokemon }) => {
+  const { isFavorite, toggleFavorite } = useToggleFavorite(pokemon.id);
   return (
     <MainLayout title={`Pokémon - ${pokemon.name}`}>
       <Grid.Container css={{ marginTop: '5px' }} gap={2}>
@@ -16,7 +18,10 @@ const PokemonPage: NextPage<Props> = ({ pokemon }) => {
           <Card>
             <Card.Body>
               <Card.Image
-                src={pokemon.sprites.other?.dream_world.front_default || '/no-image.png'}
+                src={
+                  pokemon.sprites.other?.dream_world.front_default ||
+                  '/no-image.png'
+                }
                 alt={pokemon.name}
                 width="100%"
                 height={200}
@@ -26,12 +31,14 @@ const PokemonPage: NextPage<Props> = ({ pokemon }) => {
         </Grid>
         <Grid xs={12} sm={8}>
           <Card>
-            <Card.Header css={{ display: 'flex', justifyContent: 'space-between' }}>
+            <Card.Header
+              css={{ display: 'flex', justifyContent: 'space-between' }}
+            >
               <Text h1 transform="capitalize">
                 {pokemon.name}
               </Text>
-              <Button color="gradient" ghost>
-                Guardar en favoritos
+              <Button color="gradient" onClick={toggleFavorite} ghost>
+                {isFavorite ? 'Quitar de favoritos' : 'Guardar en favoritos'}
               </Button>
             </Card.Header>
             <Card.Body>
