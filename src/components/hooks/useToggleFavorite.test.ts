@@ -4,8 +4,6 @@ import {
   renderHook,
   act,
   RenderHookResult,
-  RenderHookOptions,
-  RenderResult,
   Renderer,
 } from '@testing-library/react-hooks';
 interface P {
@@ -17,7 +15,7 @@ interface S {}
 describe('Test useToggleFavorite hook', () => {
   let rendered: RenderHookResult<S, P, Renderer<S>>;
   beforeEach(() => {
-    rendered = renderHook(() => useToggleFavorite());
+    rendered = renderHook<S, P>(() => useToggleFavorite());
   });
   test('Test initialize useToggleFavorite hook', () => {
     const { current } = rendered.result;
