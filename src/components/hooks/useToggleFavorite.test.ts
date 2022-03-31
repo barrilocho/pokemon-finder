@@ -6,16 +6,16 @@ import {
   RenderHookResult,
   Renderer,
 } from '@testing-library/react-hooks';
-interface P {
+interface ToggleReturnInterface {
   isFavorite: boolean;
   existInFavorites: (id: number) => boolean;
   toggleFavorite: (id: number) => void;
 }
 interface S {}
 describe('Test useToggleFavorite hook', () => {
-  let rendered: RenderHookResult<S, P, Renderer<S>>;
+  let rendered: RenderHookResult<S, ToggleReturnInterface, Renderer<S>>;
   beforeEach(() => {
-    rendered = renderHook<S, P>(() => useToggleFavorite());
+    rendered = renderHook<S, ToggleReturnInterface>(() => useToggleFavorite());
   });
   test('Test initialize useToggleFavorite hook', () => {
     const { current } = rendered.result;
