@@ -10,7 +10,7 @@ export const useToggleFavorite = () => {
       setFavorite(favorites.filter((item: number) => item !== id));
       setIsFavorite(false);
     } else {
-      setFavorite([...favorites, id]);
+      if (!existInFavorites(id)) setFavorite([...favorites, id]);
       setIsFavorite(true);
     }
   };
