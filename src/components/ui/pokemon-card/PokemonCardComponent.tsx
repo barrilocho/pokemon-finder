@@ -20,7 +20,7 @@ export const PokemonCardComponent: FC<Props> = ({ pokemon }) => {
         </Card.Body>
         <Card.Footer>
           <Row justify="space-between">
-            <Text transform="capitalize">{pokemon.name}</Text>
+            {pokemon.name && <Text transform="capitalize">{pokemon.name}</Text>}
             <Text>#{pokemon.id}</Text>
           </Row>
         </Card.Footer>
