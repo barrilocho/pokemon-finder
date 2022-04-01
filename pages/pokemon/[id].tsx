@@ -22,7 +22,7 @@ const PokemonPage: NextPage<Props> = ({ pokemon }) => {
 
   const handleToggleFavorite = (id: number) => {
     toggleFavorite(id);
-    if (!isFavorite) return;
+    if (isFavorite) return;
     confetti({
       zIndex: 999,
       particleCount: 100,
