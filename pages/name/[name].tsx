@@ -6,6 +6,7 @@ import { pokeApi } from '../../src/api';
 import { useToggleFavorite } from '../../src/components/hooks';
 import { MainLayout } from '../../src/components/layouts';
 import { PokemonInterface, PokemonListResponse } from '../../src/interfaces';
+import { getPokemonInfo } from '../../src/utils';
 interface Props {
   pokemon: PokemonInterface;
 }
@@ -114,12 +115,7 @@ export const getStaticPaths: GetStaticPaths = async (ctx) => {
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const { name } = params as { name: string };
-  const { data } = await pokeApi.get<PokemonInterface>(`/pokemon/${name}`);
-  const pokemon = {
-    id: data.id,
-    name: data.name,
-    sprites: data.sprites,
-  };
+  const pokemon = await getPokemonInfo(name);
   return {
     props: {
       pokemon,
