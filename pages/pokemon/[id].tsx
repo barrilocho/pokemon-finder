@@ -1,6 +1,7 @@
 import { Button, Card, Container, Grid, Image, Text } from '@nextui-org/react';
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 import { useEffect } from 'react';
+import confetti from 'canvas-confetti';
 import { pokeApi } from '../../src/api';
 import { useToggleFavorite } from '../../src/components/hooks';
 import { MainLayout } from '../../src/components/layouts';
@@ -18,6 +19,18 @@ const PokemonPage: NextPage<Props> = ({ pokemon }) => {
       toggleFavorite(pokemon.id);
     }
   });
+
+  const handleToggleFavorite = (id: number) => {
+    toggleFavorite(id);
+    if (!isFavorite) return;
+    confetti({
+      zIndex: 999,
+      particleCount: 100,
+      spread: 160,
+      angle: -100,
+      origin: { x: 1, y: 0 },
+    });
+  };
 
   return (
     <MainLayout title={`Pokémon - ${pokemon.name}`}>
@@ -47,7 +60,7 @@ const PokemonPage: NextPage<Props> = ({ pokemon }) => {
               </Text>
               <Button
                 color="gradient"
-                onClick={() => toggleFavorite(pokemon.id)}
+                onClick={() => handleToggleFavorite(pokemon.id)}
                 ghost={!isFavorite}
               >
                 {`${isFavorite ? 'Remove' : 'Add'} to favorites`}
