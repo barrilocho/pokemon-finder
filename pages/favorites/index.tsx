@@ -26,6 +26,7 @@ const FavoritesPage: NextPage = () => {
                   img: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${id}.svg`,
                   id: id,
                 }}
+                redirectTo={`/pokemon/${id}`}
                 key={id}
               ></PokemonCardComponent>
             ))}

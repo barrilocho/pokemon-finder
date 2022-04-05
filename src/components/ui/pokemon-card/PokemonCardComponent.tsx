@@ -5,12 +5,16 @@ import { useRouter } from 'next/router';
 
 interface Props {
   pokemon: SmallPokemon;
+  redirectTo?: string;
 }
 
-export const PokemonCardComponent: FC<Props> = ({ pokemon }) => {
+export const PokemonCardComponent: FC<Props> = ({
+  pokemon,
+  redirectTo = `/name/${pokemon.name}`,
+}) => {
   const router = useRouter();
   const onClick = () => {
-    router.push(`/name/${pokemon.name}`);
+    router.push(redirectTo);
   };
   return (
     <Grid key={pokemon.id} xs={6} sm={3} md={2} xl={1}>
