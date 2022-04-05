@@ -61,7 +61,7 @@ describe('Test pokemon Card component', () => {
     const button = component.getByRole('button');
     expect(button).toBeInTheDocument();
   });
-  test('Test favorite button exist', async () => {
+  test('Test favorite button click', async () => {
     const button = component.getByRole('button');
     await fireEvent.click(button);
     const removeLabel = component.getByText('Remove to favorites');
@@ -69,5 +69,14 @@ describe('Test pokemon Card component', () => {
     await fireEvent.click(button);
     const addButton = component.getByText('Add to favorites');
     expect(addButton).toBeInTheDocument();
+  });
+  test('Test pokemon image exist', () => {
+    const imageElement = component.getByAltText(pokemon1.name);
+    expect(imageElement).toBeInTheDocument();
+    expect(imageElement).toBeInstanceOf(Image);
+  });
+  test('Test pokemon name exist', () => {
+    const imageElement = component.getByText(pokemon1.name);
+    expect(imageElement).toBeInTheDocument();
   });
 });
