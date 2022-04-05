@@ -5,11 +5,11 @@ import confetti from 'canvas-confetti';
 import { pokeApi } from '../../src/api';
 import { useToggleFavorite } from '../../src/components/hooks';
 import { MainLayout } from '../../src/components/layouts';
-import { PokemonInterface } from '../../src/interfaces';
+import { SpritesPokemon } from '../../src/interfaces';
 import { getPokemonInfo } from '../../src/utils';
 
 interface Props {
-  pokemon: PokemonInterface;
+  pokemon: SpritesPokemon;
 }
 
 const PokemonPage: NextPage<Props> = ({ pokemon }) => {

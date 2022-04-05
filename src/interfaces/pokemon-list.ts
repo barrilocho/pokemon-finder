@@ -1,3 +1,5 @@
+import { Sprites } from './pokemon';
+
 export interface PokemonListResponse {
   count: number;
   next: string;
@@ -10,4 +12,8 @@ export interface SmallPokemon {
   url?: string;
   id: number;
   img: string;
+}
+
+export interface SpritesPokemon extends SmallPokemon {
+  sprites: Sprites;
 }
