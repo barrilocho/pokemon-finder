@@ -1,9 +1,6 @@
 import React from 'react';
 import { render, RenderResult, fireEvent } from '@testing-library/react';
-import '@testing-library/jest-dom';
-import { prettyDOM } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
-import PokemonPage from './[id]';
+import PokemonPage from '../pages/pokemon/[id]';
 
 describe('Test pokemon Card component', () => {
   let component: RenderResult;
